@@ -1,0 +1,4 @@
+baseURL: https://matejgazda.com
+languageCode: en-us
+title: Matej Gazda's blog
+theme: ["PaperMod"]
