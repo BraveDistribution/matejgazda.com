@@ -1,0 +1,19 @@
+---
+title: "Projects"
+description: "Open-source code, tools, and ongoing work."
+toc: true
+---
+
+## pytsp
+
+Travelling Salesman Problem algorithms in Python: 2-opt, 3-opt, and the
+Christofides 1.5-approximation. Originally written as a teaching/reference
+implementation, still occasionally cited.
+
+[GitHub →](https://github.com/BraveDistribution/pytsp)
+
+<!--
+Add new projects as level-2 sections with a one-paragraph summary and a
+link. For richer project cards, consider a Quarto listing pointed at a
+`projects/` folder of project pages.
+-->

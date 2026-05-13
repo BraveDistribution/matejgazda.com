@@ -1,0 +1,51 @@
+---
+title: "About"
+image: assets/avatar.jpg
+image-alt: "Portrait of Matej Gazda"
+about:
+  template: solana
+  image-shape: round
+  image-width: 12em
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/BraveDistribution
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/matej-gazda-579a36100/
+    - icon: rss
+      text: RSS
+      href: posts/index.xml
+toc: false
+---
+
+I am Matej Gazda, an AI researcher at the [Technical University of
+Košice](https://www.tuke.sk/). My research focuses on machine learning for
+medical imaging: how to build models that are accurate, calibrated, and
+trustworthy in clinical settings where data is scarce and the cost of being
+wrong is high.
+
+## Research interests
+
+- Deep learning for medical image analysis
+- Sample-efficient learning, self-supervision, and domain adaptation
+- Uncertainty quantification and model calibration
+- The boundary between methodological novelty and clinical usefulness
+
+## Background
+
+I joined the Technical University of Košice as a researcher after several years
+in software engineering, where I worked on production ML systems and
+distributed services. That mix shows up here: most of what I write tries to be
+both rigorous and runnable.
+
+## This site
+
+The blog archive (`tag: legacy`) contains the earliest posts from 2017–2019,
+ported from the WordPress version of this site. Everything new will live in
+[Writing](posts/index.qmd).
+
+## Get in touch
+
+- GitHub: [BraveDistribution](https://github.com/BraveDistribution)
+- LinkedIn: [matej-gazda](https://www.linkedin.com/in/matej-gazda-579a36100/)

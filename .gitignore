@@ -1,0 +1,11 @@
+_site/
+_freeze/
+.quarto/
+.DS_Store
+node_modules/
+.idea/
+.vscode/
+*.log
+
+/.quarto/
+**/*.quarto_ipynb

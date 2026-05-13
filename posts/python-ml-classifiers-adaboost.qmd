@@ -1,0 +1,65 @@
+---
+title: "Python ML classifiers: AdaBoost"
+date: 2017-10-22T09:58:31
+aliases:
+  - /python-ml-classifiers-adaboost/
+draft: false
+categories:
+  - archive
+tags:
+  - legacy
+description: "Nowadays, there are a lot of classifiers, that performs very similarly and they more or less the same system resources. How do you decide which of these classifiers you should use? Is it AdaBoost, Naive-Bayes or other? Well, the most obvious answer is that you have to try all of them and then pick the ... Read more"
+---
+
+Nowadays, there are a lot of classifiers, that performs very similarly and they more or less the same system resources. How do you decide which of these classifiers you should use? Is it AdaBoost, Naive-Bayes or other?
+
+Well, the most obvious answer is that you have to try all of them and then pick the best one! (It varies with your dataset though).
+
+In my next post I will describe Naive-Bayes classifier and I will provide a working example using sci-kit learn framework in python.
+
+---
+
+#### #1 AdaBoost: Short description
+
+Adaboost is a shorter term for *Adaptive Boosting*. Boosting is one of the most powerful learning ideas, originally designed for classification problems.
+
+Consider a two-class problem, with the output variable coded as ![](/wp-assets/plugins/latex/cache/tex_905ca463af4b4abb88914a6db37dc070.gif). Given a vector of predictor variables ![](/wp-assets/plugins/latex/cache/tex_02129bb861061d1a052c592e2dc6b383.gif), a classifier ![](/wp-assets/plugins/latex/cache/tex_8d1012777b87466643a11b2aadbc7f92.gif) returns prediction of one of the two values ![](/wp-assets/plugins/latex/cache/tex_b38d90f7e51a6ad43644de01f3e85423.gif). The error is defined as follows:
+
+![](/wp-assets/plugins/latex/cache/tex_db9ae881e84eb8020f3317c249d69099.gif)
+
+The boosting is an iterative procedure that combines the results of many weak classifiers (![](/wp-assets/plugins/latex/cache/tex_bb58b4bcb505728da546ed5b4bd8fc0b.gif)) on modified data to produce a powerful classifier. Starting with the unweighted training sample, AdaBoost builds a first weak classifier ![](/wp-assets/plugins/latex/cache/tex_87bc979da145a81cfd818a1db6617739.gif), for example Decision Stump that produces class labels.
+
+A *weak*classifier is defined as a classifier whose error rate is slightly better than random pick. If at least one misclassification was produced by one of the classifiers,  the weight of that observation point is increased. Subsequently, the second classifier is build using the new weights. The predictions from all of them are then combined by a weighted majority voting technique, thus producing final prediction:
+
+![](/wp-assets/plugins/latex/cache/tex_a5f2706380db9436e85f2cddf5bbc7b9.gif)
+
+, where ![](/wp-assets/plugins/latex/cache/tex_f3110f236a9f7d88bbe34091b1bacccf.gif) are numbers returned by boosting algorithm to increase influence to the better classifiers in the sequence. Each boosting step consists of applying weights ![](/wp-assets/plugins/latex/cache/tex_6e3c61a736996df81cbe3048e40bdfa0.gif) to each of the training data points ![](/wp-assets/plugins/latex/cache/tex_89f180d2d9257d6322c109291a5fa313.gif).
+
+---
+
+#### #2 AdaBoost implementation in sci-kit learn
+
+There exist a lot of different algorithms for AdaBoost but I have chosen AdaBoost [SAMME](http://web.stanford.edu/~hastie/Papers/samme.pdf) that supports multi-class classification and it is already implemented in [scikit-learn](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html).
+
+*AdaBoostClassifier*class actually doesn't require any parameters to run (it has only optional ones) and they are:
+
+- *base\_estimator:*the default estimator is *DecisionTreeClassifier* (I called it *Decision Stump* in the previous section)*.*
+- *n\_estimators:* [Mease and Wyner (2009)](http://jmlr.org/papers/volume9/mease08a/mease08a_with_discussion.pdf) says, that 1000 estimators should be enough. I believe that sometimes you do not need that much of estimators. Personally I used 500 estimators in my latest simulations.
+- *learning\_rate:*I haven't tried tuning this parameter, so the default is one. There is a minor trade-off between the number of estimators and learning rate. This parameters lower the significance of the contribution of each classifier.
+- *algorithm: SAMME.R*
+- *random\_state:*
+
+The actual code is pretty simple:
+
+```
+X, y = make_classification(n_features=2, n_redundant=0, n_informative=2,
+                           random_state=1, n_clusters_per_class=1)
+X, X_test, y, y_test = train_test_split(X_full, y_full, train_size=0.8)
+scaler = StandardScaler().fit(X_train, y_train)
+clf = AdaBoostClassifier(n_estimators=100)
+clf.fit(scaler.transform(X_train, y_train), y_train)
+score = clf.score(scaler.transform(X_test, y_test)
+print 'RESULTS AdaBoost: ' str(score)
+```
+
+As you can see, you don't need to tune parameters in comparison with, for example [SVM](https://en.wikipedia.org/wiki/Support_vector_machine) (thus not needing to use [GridSearchCV](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)).

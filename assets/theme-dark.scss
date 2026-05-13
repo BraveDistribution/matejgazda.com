@@ -1,0 +1,181 @@
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+$zinc-50:  #fafafa;
+$zinc-100: #f4f4f5;
+$zinc-200: #e4e4e7;
+$zinc-300: #d4d4d8;
+$zinc-400: #a1a1aa;
+$zinc-500: #71717a;
+$zinc-600: #52525b;
+$zinc-700: #3f3f46;
+$zinc-800: #27272a;
+$zinc-900: #18181b;
+$zinc-950: #09090b;
+
+$accent:   #5eead4;       // teal-300, glows on dark
+$accent-2: #2dd4bf;
+
+$primary:        $accent;
+$body-bg:        $zinc-950;
+$body-color:     $zinc-100;
+$headings-color: $zinc-50;
+$link-color:     $accent;
+$link-hover-color: $accent-2;
+$code-color:     $zinc-100;
+$code-bg:        $zinc-800;
+$border-color:   $zinc-800;
+$muted:          $zinc-400;
+
+$font-family-sans-serif: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family-monospace:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+$font-family-serif:      'Fraunces', ui-serif, Georgia, 'Times New Roman', serif;
+
+$headings-font-family: $font-family-serif;
+$headings-font-weight: 600;
+$line-height-base:     1.65;
+
+$navbar-dark-color: $zinc-300;
+$navbar-dark-hover-color: $zinc-50;
+$navbar-dark-active-color: $accent;
+
+$container-max-widths: (
+  sm: 540px, md: 720px, lg: 900px, xl: 1040px, xxl: 1100px
+);
+
+/*-- scss:rules --*/
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4 { letter-spacing: -0.015em; }
+
+.navbar {
+  background-color: rgba(9, 9, 11, 0.8) !important;
+  border-bottom: 1px solid $border-color;
+  backdrop-filter: saturate(180%) blur(10px);
+}
+.navbar-brand {
+  font-family: $font-family-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  color: $zinc-50 !important;
+}
+.navbar-brand img {
+  height: 28px; width: 28px;
+  border-radius: 50%;
+  margin-right: 0.55rem;
+  object-fit: cover;
+}
+.nav-link { font-size: 0.95rem; font-weight: 500; }
+
+.quarto-title-block {
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.quarto-title-block .description { color: $muted; font-size: 1.05rem; }
+
+article a, .content a {
+  text-decoration: underline;
+  text-decoration-color: rgba(94, 234, 212, 0.35);
+  text-underline-offset: 3px;
+}
+
+code {
+  background: $code-bg;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  font-size: 0.92em;
+}
+pre code { background: transparent; border: 0; padding: 0; }
+div.sourceCode {
+  background: $code-bg;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  margin: 1.2rem 0;
+}
+
+blockquote {
+  border-left: 3px solid $accent;
+  background: $zinc-900;
+  padding: 0.6rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0 6px 6px 0;
+  color: $zinc-200;
+}
+
+.quarto-listing-default .listing-item {
+  border-bottom: 1px solid $border-color;
+  padding: 1.25rem 0;
+  transition: background 0.15s ease;
+}
+.quarto-listing-default .listing-item:hover { background: $zinc-900; }
+.quarto-listing-default .listing-item .listing-title {
+  font-family: $font-family-serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+}
+.quarto-listing-default .listing-item .listing-title a { color: $zinc-50; }
+.quarto-listing-default .listing-item .listing-title a:hover { color: $accent; }
+.quarto-listing-default .listing-item .listing-description {
+  color: $muted; font-size: 0.98rem; line-height: 1.55;
+}
+.listing-date, .listing-reading-time {
+  color: $muted; font-size: 0.85rem; font-variant-numeric: tabular-nums;
+}
+.listing-category {
+  background: $zinc-900;
+  color: $zinc-300;
+  border: 1px solid $border-color;
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.75rem; font-weight: 500;
+}
+.listing-category:hover { background: $accent; color: $zinc-950; border-color: $accent; }
+
+.about-image {
+  border-radius: 50%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  border: 4px solid $zinc-900;
+}
+.about-link {
+  border: 1px solid $border-color !important;
+  border-radius: 999px !important;
+  padding: 0.4rem 0.95rem !important;
+  background: $zinc-900 !important;
+  color: $zinc-200 !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+  margin: 0.25rem 0.25rem !important;
+  transition: all 0.15s ease;
+}
+.about-link:hover {
+  border-color: $accent !important;
+  color: $accent !important;
+  transform: translateY(-1px);
+}
+.about-entity .description { font-size: 1.05rem; color: $zinc-200; line-height: 1.7; }
+
+.page-footer, footer.footer {
+  border-top: 1px solid $border-color;
+  background: $zinc-900 !important;
+  color: $muted !important;
+  font-size: 0.875rem;
+}
+.page-footer a, footer.footer a { color: $zinc-300 !important; }
+
+article > h2::before {
+  content: ""; display: block;
+  width: 2rem; height: 2px;
+  background: $accent;
+  margin-bottom: 0.5rem;
+  border-radius: 2px;
+}
+
+article img { border-radius: 6px; }

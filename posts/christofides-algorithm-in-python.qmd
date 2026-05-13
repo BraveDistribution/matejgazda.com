@@ -1,0 +1,71 @@
+---
+title: "Christofides algorithm in Python"
+date: 2018-11-18T12:07:31
+aliases:
+  - /christofides-algorithm-in-python/
+draft: false
+categories:
+  - archive
+tags:
+  - legacy
+description: "Travelling salesman problem (a.k.a chinese postman) is a famous matematical problem firstly mentioned back in 1832. Basically, it asks the following question: Given a list of cities and distance between them what is the shortest path to visit them all and return back to the original city? Mathematical definition was laid by W.R. Hamilton and ... Read more"
+---
+
+Travelling salesman problem (a.k.a chinese postman) is a famous matematical problem firstly mentioned back in 1832.
+
+Basically, it asks the following question: Given a list of cities and distance between them what is the shortest path to visit them all and return back to the original city?
+
+Mathematical definition was laid by [W.R. Hamilton](https://en.wikipedia.org/wiki/William_Rowan_Hamilton "William Rowan Hamilton") and by the British mathematician [Thomas Kirkman](https://en.wikipedia.org/wiki/Thomas_Kirkman "Thomas Kirkman").
+
+### **Christofides algorithm**
+
+Christofides algorithm is an approximative algorithm for finding solution for travelling salesman problem. Beware, this algorithm works only on instances, where the distances form a metric space. Therefore, it works only if the instance obeys the trinagle inequality and the distance matrix are symmetric.
+
+Christofides algorithm has the best approximation ratio that has been proven so far. The solution provided by Christofides guarantees to be withing 3/2 of the optimum solution. Proof can be read on various other sources.
+
+The first step of the Christofides algorithm is to find minimal spanning tree.
+
+#### #1 Minimal spanning tree
+
+Given an undirected connected graph ![](/wp-assets/plugins/latex/cache/tex_c311905eab60237306c75dfad5d0ca29.gif) a spanning tree ![](/wp-assets/plugins/latex/cache/tex_5dbc98dcc983a70728bd082d1a47546e.gif) of graph ![](/wp-assets/plugins/latex/cache/tex_dfcf28d0734569a6a693bc8194de62bf.gif) is a subgraph of ![](/wp-assets/plugins/latex/cache/tex_dfcf28d0734569a6a693bc8194de62bf.gif) that connects all vertices together without cycles with minimum possible total edge weight.
+
+The most known two simple algorithms that can find MST are [Kruskal](https://en.wikipedia.org/wiki/Kruskal%27s_algorithm) and [Prim](https://en.wikipedia.org/wiki/Prim%27s_algorithm). I implemented the latter, but nevertheless if you want to contribute to this open source project, feel free to make a pull request for Kruskal. Prim can be found here on [github](https://github.com/BraveDistribution/pytsp/blob/master/pytsp/utils.py).
+
+#### #2 Get odd degree vertices
+
+From my point of view, this step is pretty clear. Find odd degree vertices and save them into a list.
+
+#### #3 From odd degree vertices, make minimal-weight perfect matching
+
+Third step of the Christofides algorithm is to find minimal-weight perfect matching. Matching ![](/wp-assets/plugins/latex/cache/tex_69691c7bdcc3ce6d5d8a1361f22d04ac.gif) in a graph ![](/wp-assets/plugins/latex/cache/tex_dfcf28d0734569a6a693bc8194de62bf.gif) is a set of edges ![](/wp-assets/plugins/latex/cache/tex_3a3ea00cfc35332cedf6e5e9a32e94da.gif) without common vertices. Perfect matching is a matching which matches all vertices of the graph. That also means that every vertex of graph is incident to exactly one edge of the matching ![](/wp-assets/plugins/latex/cache/tex_69691c7bdcc3ce6d5d8a1361f22d04ac.gif).
+
+Only few of algorithms were published that can find minimal-weight perfect matching. One of them is original Edmond's Blossom algorithm [1]. There were multiple improvements done in that algorithm like Blossom IV by Cook and Rohe and [Blossom V](https://pub.ist.ac.at/~vnk/papers/blossom5.pdf)(as far as I know, this is the latest one) by Kolmogorov [2].
+
+I tried to read the papers regarding those algorithms, but after long study I decided that I can use algorithm that is already in the networkx library called [max\_weight\_matching](https://networkx.github.io/documentation/stable/reference/algorithms/generated/networkx.algorithms.matching.max_weight_matching.html#networkx.algorithms.matching.max_weight_matching). How? Simply negating the signs in the adjacency matrix. Note that this procedure works only if we are searching for maximum cardinality matching! Otherwise, the edges with negative weights would be simply ignored by the algorithm. Another approach would be to substract each weight from very large number.
+
+#### #4 Add edges from 3/ into minimal spanning tree
+
+The fourth step is to unite matching ![](/wp-assets/plugins/latex/cache/tex_69691c7bdcc3ce6d5d8a1361f22d04ac.gif) and minimal spanning tree ![](/wp-assets/plugins/latex/cache/tex_9b64696be05602589dfa9ea20da1e5fe.gif) to form an Eulerian multigraph. Multigraph means that there may exists repetetive edges. NetworkX provides a nice data structure called ***Multigraph**.*
+
+#### #5 Create euler tour
+
+Again, there is no need to implement algorithm for finding euler tour from the scratch. Fortunately, networkx provide a method for [that](https://networkx.github.io/documentation/networkx-1.10/reference/generated/networkx.algorithms.euler.eulerian_circuit.html).
+
+#### #6 Remove repeated vertices
+
+The last step in the algorithm is to remove repeated vertices that were included in the euler tour. If path is a list then vertices may be removed this way:
+
+```
+path = list(dict.fromkeys(path).keys())
+path.append(starting_node)
+```
+
+The whole code can be read on my [g](https://github.com/BraveDistribution/pytsp)ithub.
+
+.
+
+**Sources:**
+
+[1]:  https://stanford.edu/~rezab/classes/cme323/S16/projects\_reports/shoemaker\_vare.pdf
+
+[2]: https://pub.ist.ac.at/~vnk/papers/blossom5.pdf

@@ -1,0 +1,43 @@
+---
+title: "Feature Selection process"
+date: 2017-11-12T14:13:16
+aliases:
+  - /feature-selection-process/
+draft: false
+categories:
+  - archive
+tags:
+  - legacy
+description: "#1 Motivation for use of feature selection methods Nowadays, we live in world where smart-devices produces huge amount of data. In real-world applications we encounter a big issue known as Curse of dimensionality. That means, we can find easily datasets with high number of features without adequate number of observation points. That can (and probably will) cause ... Read more"
+---
+
+### #1 Motivation for use of feature selection methods
+
+![Feature selection process](https://vectr.com/matog/aibDnfwvV.png?)
+
+Feature selection process
+
+Nowadays, we live in world where smart-devices produces huge amount of data. In real-world applications we encounter a big issue known as *Curse of dimensionalit**y*. That means, we can find easily datasets with high number of features without adequate number of observation points. That can (and probably will) cause over-fitting of the model.
+
+To effectively implement data mining methods, feature selection methods are often used in preprocessing stage.
+
+### #2 What is feature selection?
+
+**Feature selection**, also known as variable selection is the process of selecting subset of relevant features for use in the following model. They are used to speed up learning process and to improve model interpretability.
+
+Note: Irrelevant features decrease prediction accuracy and simultaneously increase learning time (due to high dimensionality).
+
+### #3 Feature selection method approaches
+
+FS methods are commonly divided into 3 main approaches:
+
+1. **Filter methods** have the smallest computational complexity. They select the subset of features regardless of model (classifier). The importance of variables are calculated by various statistical tests for their outcome with the output variable. State-of-art methods: [Relief](https://en.wikipedia.org/wiki/Relief_(feature_selection)), [mRMR](https://en.wikipedia.org/wiki/Minimum_redundancy_feature_selection). Filter methods can be then divided into 2 categories, the first one is univariate FS and the second one is multivariate FS methods. Univariate methods completely isolates features from each other and on the other hand multivariate techniques take into consideration also feature sependency.
+2. **Wrapper methods**tries to select a subset of features and train a model using them. After the model is trained, some conclusions are made and based on them we either remove/add some of the features from/to that subset. Wrapper methods are really computationally expensive, because the problem is basically doing exhaustive search over all subsets. The final subset is chosen as a subset with highest achieved score.
+3. **Embedded methods**are methods, that are trying to combine the best parts from Filter and Wrapper methods. It uses feature selection with classification simultaneously.
+
+### 
+
+**Notes:**
+
+- **Most used machine learning framework in Python:** [Scikit Learn](http://scikit-learn.org)
+- **Feature selection methods:** [SkFeature](https://github.com/jundongl/scikit-feature/tree/master/skfeature)

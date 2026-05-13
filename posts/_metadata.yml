@@ -1,0 +1,11 @@
+# Defaults applied to every post.
+freeze: auto
+author:
+  - name: Matej Gazda
+    url: https://matejgazda.com
+toc: true
+toc-depth: 3
+code-tools:
+  source: false
+  toggle: false
+comments: false

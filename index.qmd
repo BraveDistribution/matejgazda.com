@@ -1,0 +1,58 @@
+---
+title: "Matej Gazda"
+subtitle: "Machine learning · Medical imaging · Technical University of Košice"
+image: assets/avatar.jpg
+image-alt: "Portrait of Matej Gazda"
+about:
+  template: trestles
+  image-shape: round
+  image-width: 14em
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/BraveDistribution
+    - icon: rss
+      text: RSS
+      href: posts/index.xml
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/matej-gazda-579a36100/
+    # - icon: twitter-x
+    #   text: X
+    #   href: https://x.com/USERNAME
+    # - icon: mortarboard-fill
+    #   text: Scholar
+    #   href: https://scholar.google.com/citations?user=ID
+    # - icon: envelope
+    #   text: Email
+    #   href: mailto:you@example.com
+page-layout: full
+toc: false
+---
+
+I am an AI researcher at the [Technical University of Košice](https://www.tuke.sk/).
+My work sits at the intersection of **machine learning** and **medical imaging**,
+with a long-standing curiosity for the engineering and statistical foundations
+that make modern ML work.
+
+This is the slow-form home for my [writing](posts/index.qmd),
+[publications](publications.qmd), and [projects](projects.qmd).
+
+::: {.eyebrow}
+Currently
+:::
+
+::: {.now-grid}
+::: {.now-card}
+### Research
+Building models for clinical imaging that are robust, sample-efficient, and
+honest about uncertainty.
+:::
+
+::: {.now-card}
+### Writing
+Paper notes, ML walkthroughs, and the occasional engineering rabbit hole.
+:::
+:::
+
+[Browse all posts →](posts/index.qmd){.see-all}

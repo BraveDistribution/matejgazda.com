@@ -1,0 +1,119 @@
+---
+title: "Django with Docker and Gitlab Runner example"
+date: 2018-09-17T19:24:51
+aliases:
+  - /02-crypto-dev-info-django-with-docker-and-gitlab-runner/
+draft: false
+categories:
+  - archive
+tags:
+  - legacy
+description: "In the second post of this series (check the first one!) we will talk about technologies that will be used in our day-to-day development process. A friend of mine wanted to participate on this project and therefore I decided to set-up my old laptop to be a full-time development server that will be running the newest ... Read more"
+---
+
+In the second post of this series (*[check the first one!](http://matejgazda.com/01-crypto-dev-info-idea-choosing-technologies/)*) we will talk about technologies that will be used in our day-to-day development process. A friend of mine wanted to participate on this project and therefore I decided to set-up my old laptop to be a full-time development server that will be running the newest version of my application.
+
+I would like to make a CI/CD pipeline that will look something like this:
+
+1. Run pip freeze >> requirements.txt *only if you added/removed/changed versions of any libraries in your virtual environment,*
+2. Push new commit into [gitlab](https://gitlab.com) with some changes,
+3. Gitlab runner should automatically run tests against the changes,
+4. If the tests pass successfully, gitlab runner should build the docker image,
+5. Gitlab runner should deploy the new version (called staging deployment environment).
+
+##### #1 Export all python libraries with their versions defined to the requirements.txt file
+
+Let's say we added/removed/modified the libraries we use in the current project. For example, if I update Django library to the newer version in my virtual environment and use any function from that new version, my colleagues that don't have the updated version of the library will be unable to run the project. We can solve this issue with the of help pip freeze >> requirements.txt command.
+
+*This may be a reason why the development server won't work after commit. We need to avoid this!*
+
+Command pip freeze does one simple thing. It lists all installed libraries in the current virtual environment. The >> symbol in Linux means that the output of the previous command will be redirected into a file. In our case the file is called requirements.txt. Then we can push the updated file into git.
+
+It is really easy to install all libraries from requirements.txt file. Just use the following command: pip install -r requirements.txt . We will use this command in dockerfile as you will see in a second.
+
+##### #2 Create docker file
+
+Docker is more or less a new container technology. This technology is beyond scope of this post, so if you don't understand what docker is and you would like to know something more just click [here](https://docs.docker.com/get-started/).
+
+```
+# Official Python image
+FROM python:3.6
+
+# create root directory for project, set the working directory and move all files
+RUN mkdir /cryptoapp
+WORKDIR /cryptoapp
+ADD . /cryptoapp
+
+# Web server will listen to this port
+EXPOSE 8000
+
+# Install all libraries we saved to requirements.txt file
+RUN pip install -r requirements.txt
+```
+
+The `FROM` instruction tells docker which image should be used as base image. In this particular case, we specified python 3.6. Although don't forget to specify the version you've been using on your development machine.
+
+The `RUN` instruction will execute any commands in a new layer on top of the current image and commit the results. That means every `RUN` command will create a new docker image that will be used in subsequent commands.
+
+The `ADD` command copies files from local folder (in this case whole folder where Dockerfile is located) and copies it to filesystem of the image.
+
+`EXPOSE` command informs the docker that the container will listen to port 8000.
+
+---
+
+Now let's move to create docker-compose.yml file.  My pick for database is [postgresql](https://www.postgresql.org) so the first service will be db with image: postgres. The second service is django. The most important part is anything behind "command". python manage.py runserver 0.0.0.0:8000 starts python webserver.
+
+```
+version: "2"
+services:
+  db:
+    image: postgres
+  django:
+    build: .
+    restart: always
+    container_name: cryptoapp
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+```
+
+##### #3 Set up gitlab runner
+
+The last step to achieve our goal is to set up gitlab runner. Gitlab runner has its configuration stored in a file called "gitlab-ci.yml". Let's create the basic config (*as you can see, docker-compose command is used, so you need to include the python package docker-compose in your requirements.txt)*:
+
+```
+stages:
+  - test
+  - build
+  - deploy
+
+test:
+  stage: test
+  script: echo "Testing the app"
+
+build:
+  stage: build
+  script:
+  - echo "Building the app"
+  - docker-compose build
+
+deploy_staiging:
+  stage: deploy
+  only:
+  - master
+  script:
+  - echo "Deploying the app"
+  - docker-compose up -d
+```
+
+As you can see have 3 separate stages.
+
+The first one is just a testing phase, currently just dummy (the script just prints out the "Testing the app" string. The second one is build phase, where we build docker image.
+
+The third phase is the phase where magic happens, that means we run the docker container up and our server should be ready with the database turn on as well.
+
+##### #4 Summary
+
+To sum this up completely, we have working CI/CD pipeline for our project. After every commit to gitlab, this pipeline will start. All steps that gitlab runner makes are recoreded in .gitlab-ci.yml file.

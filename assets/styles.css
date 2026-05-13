@@ -1,0 +1,88 @@
+/* Global tweaks shared across light/dark themes. */
+
+article > h1.title {
+  margin-bottom: 0.4rem;
+}
+
+/* Tighten meta on listing pages */
+.quarto-listing-default .metadata {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* Recent posts on home: less padding */
+#recent-posts .listing-item:first-child { padding-top: 0.5rem; }
+
+/* Sane image sizing for legacy WP posts */
+article img {
+  max-width: 100%;
+  height: auto;
+}
+article p > img {
+  display: block;
+  margin: 1rem auto;
+}
+
+/* Make latex-gif equations sit inline nicely */
+article img[src*="/wp-assets/plugins/latex/"] {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.15em;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* Hero / about: subtle gradient backdrop on home */
+.quarto-about-trestles {
+  padding: 1rem 0 2.5rem 0;
+}
+
+/* "See all" CTA */
+.see-all {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.45rem 0.95rem;
+  border: 1px solid var(--bs-border-color, #e7e5e4);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+.see-all:hover {
+  transform: translateY(-1px);
+}
+
+/* Section eyebrow */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--bs-secondary-color, #78716c);
+  margin-bottom: 0.4rem;
+}
+
+/* Two-column "Now / Working on" grid */
+.now-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+.now-card {
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--bs-border-color, #e7e5e4);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.5);
+}
+.now-card h3 {
+  font-size: 1rem;
+  margin: 0 0 0.4rem 0;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0;
+}
+.now-card p { margin: 0; color: var(--bs-secondary-color); font-size: 0.95rem; line-height: 1.55; }

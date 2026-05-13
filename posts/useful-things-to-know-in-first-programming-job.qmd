@@ -1,0 +1,122 @@
+---
+title: "First programming job: useful list of things to know"
+date: 2018-04-13T06:17:49
+aliases:
+  - /useful-things-to-know-in-first-programming-job/
+draft: false
+categories:
+  - archive
+tags:
+  - legacy
+description: "As you probably don't know, I have been working as a software engineer for a short period of time. My first job was related to manual testing of one bigger product and this job laid good foundation for my future. In this job I learned where the bugs are mostly found, whether they're easy to fix, ... Read more"
+---
+
+As you probably don't know, I have been working as a software engineer for a short period of time.
+
+My first job was related to manual testing of one bigger product and this job laid good foundation for my future. In this job I learned where the bugs are mostly found, whether they're easy to fix, their priority and why they exist in the first place.
+
+Moving on, I was employed as a software engineer. But back in the day I was wondering, what do I have to know to get a job? There are so many languages, frameworks and principles that I didn't know at that time! (and I still don't).
+
+Here is the list of items that is useful to know before you start your first programming job. You don't have to worry, you will probably land a job anyway, but this is recommendation from my point of view.
+
+#### #0 Work discipline
+
+Programming is a hard job. You need to deliver product regularly and finish the tasks assigned to you. How much time do you have for each task is up to the management of the company you're working for.
+
+On the other side, nobody will stand behind your shoulder to check on you whether you're currently on Facebook or you're really hardworking.  That means you can slack for some time now and then, but the time table should be followed very strictly.
+
+To be a programmer, you should be also a team player. Don't be the lazy dog that won't lift a finger without order. You're a new guy so you should apply for as many tasks as you can and that gives you the opportunity to ask questions and learn very much from your colleagues (big thanks to my former / actual colleagues, they're great).
+
+#### #1 Programming language used to develop the product you're working on
+
+In the first place you should pick up for yourself type of development you want to do. Don't worry, the transition between the various types is not that hard, except you need to learn new stuff.
+
+I don't want to start language and paradigm wars therefore I will just point out most used languages by SODS at the time it was taken (2018) divided into simple categories.
+
+**Front-end stack:** HTML, CSS, Javascript
+
+**Back-end stack:** Java, C#, Python
+
+**Databases:** SQL
+
+**Mobile development:** Android (Java), Swift
+
+**Data science:** R, Python
+
+In my opinion, every IT specialist is useful to know their way about one scripting language, that helps them to fix problems / analyze logs, analyze defects and write short programs etc. I can recommend Python, because of one simple cause. There are over **135119**packages available for use via Python package index ([PyPI](https://pypi.python.org/pypi)).
+
+#### #2 Version Control System
+
+Version control systems are a category of software that helps development teams all over the world to manage the changes done to source code over time. It records every change and developers can revert their mistakes.
+
+According to Stack Overflow Developer Survey [SODS] the winner is obvious. **[GIT](https://github.com/git/git)**is popular open-source VCS founded by Linus Torvalds.
+
+1. **Git** 87.2%
+2. **Subversion** 16.1%
+3. **Other** (mercurial, Team foundation version control)
+
+Read at least few chapters from GIT entry level book to cover basics. Dealing with source code of whole project is risky and you don't want to break something up in first few days (because everybody did :)). You should be comfortable with using basic merge, pull / push requests, understand commit / add and fetch.
+
+#### #3 OOP / Design principles
+
+Nowadays, most languages are OOP oriented. If that's the case and you've chosen OOP language, you should know what is *abstraction*, *encapsulation*, c*omposition*, i*nheritance*, *delegation* and *polymorphism*.
+
+Let's move on to design patterns:
+
+From my point of view, if you're starting your first job you don't have to explicitly know how to use design patterns, but you should be able to recognize some of them in the code. On every job interview I was asked about couple of them (my personal favorite is Observer, and I was asked just about that one, luck I guess).
+
+#### #4 Code style
+
+The programming style is a set of guidelines when writing a source code for your application. General idea is that common programming style is helping developers with code readability and understandability.
+
+Imagine reading code:
+
+```
+public 
+static void 
+main(String[] args) 
+
+
+
+    {a = 123;
+       b = 231;
+
+                }
+```
+
+instead of:
+
+```
+public static void main(String[] args) {
+    a = 123;
+    b = 231;
+}
+```
+
+Every language has it's own conventions, like [Google Java Style](https://google.github.io/styleguide/javaguide.html) or [PEP8](https://www.python.org/dev/peps/pep-0008/) for Python.
+
+#### 
+
+#### **#5 Basic database knowledge**
+
+Almost every application is working with some kind of database. Most used database language is SQL. The basic language syntax and commands will be sufficient, you can look up everything on the fly.
+
+You should understand what is query, insert, select, delete, foreign/primary keys, etc. Just to know your way around if you need to fix something with the DB.
+
+#### **#6 Basic algorithms and data structures**
+
+Every university that I know of teach some basic course of algorithms and data structures. You don't need to solve Traveling Salesma or Shortest path problem, because you will hardly need it. If you need it, you will look it up later. Although you should be able to understand when to use which structure for your data.
+
+Python dictionaries or tuples, R dataframes or Java maps are an important part of the programming world. The knowledge about them are very efficient and will grant you multiple ways of solving your problems. Then it is up to you to choose the right ones!
+
+#### #7 Terminal commands knowledge
+
+Everybody loves open-source. Everybody loves things that are free. Linux OS is strong in field of servers. Depending on the project you may need to ssh into remote machine and do various operations. Commands like *ssh*, *vim*, *tar*, *scp*, *sudo*, *grep*, *find* and others should be familiar to you.
+
+Those commands are available to you on mac machines and windows (through terminal emulators like cmder) as well. The logs generated by applications are pretty big and standard text editors have troubles loading them (I tried sublime and atom). Vim editor is blazingly fast and is right tool for this job.
+
+This list is just my view from 'recent' newcomer into programming jobs world. Don't take it too seriously. Also this article shouldn't explain all the items, just to list them that they exists.
+
+**Sources:**
+
+1. <https://insights.stackoverflow.com/survey/2018/>

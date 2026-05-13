@@ -1,0 +1,19 @@
+---
+title: "Writing"
+description: "Notes on machine learning, medical imaging, and the occasional engineering rabbit hole."
+listing:
+  contents: .
+  sort: "date desc"
+  type: default
+  fields: [date, title, description, categories, reading-time]
+  categories: numbered
+  feed:
+    items: 50
+    type: full
+  sort-ui: [date, title, reading-time]
+  filter-ui: true
+  date-format: "MMM D, YYYY"
+page-layout: full
+title-block-banner: false
+toc: false
+---

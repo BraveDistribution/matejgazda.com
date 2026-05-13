@@ -1,0 +1,116 @@
+---
+title: "TSP algorithms: 2-opt, 3-opt in python"
+date: 2019-02-08T08:14:38
+aliases:
+  - /tsp-algorithms-2-opt-3-opt-in-python/
+draft: false
+categories:
+  - archive
+tags:
+  - legacy
+description: "2-opt and 3-opt algorithms are used to get approximative solution of the travelling salesman problem. In the previous post I explained what the TSP problem is and I also included the implementation of Christofides algorithm. # 2-opt algorithm 2-opt algorithm is one of the most basic and widely used heuristic for obtaining approximative solution of TSP problem. ... Read more"
+---
+
+2-opt and 3-opt algorithms are used to get approximative solution of the travelling salesman problem. In the [previous post](http://matejgazda.com/christofides-algorithm-in-python/) I explained what the TSP problem is and I also included the implementation of [Christofides](https://en.wikipedia.org/wiki/Christofides_algorithm) algorithm.
+
+#### # 2-opt algorithm
+
+2-opt algorithm is one of the most basic and widely used heuristic for obtaining approximative solution of TSP problem. 2-opt starts with random initial tour and it improves the tour incrementally by exchanging 2 edges in the tour with two other edges.
+
+[![2-opt move](/wp-assets/uploads/2019/01/document-1024x291.png)](/wp-assets/uploads/2019/01/document.png)
+
+In each step, 2-opt algorithm deletes two edges ![](/wp-assets/plugins/latex/cache/tex_be6f4f831b80d80022fcad5cd64763b9.gif) and ![](/wp-assets/plugins/latex/cache/tex_870a108f50d21973a9fc8fda1b42dfa1.gif), where ![](/wp-assets/plugins/latex/cache/tex_859408cda730204058b0249a0adb0d2b.gif) are distinct , thus creating 2 subtours and reconnects the tour with edges ![](/wp-assets/plugins/latex/cache/tex_6234b6b5975a2cdebf36e549d0a291e4.gif) and ![](/wp-assets/plugins/latex/cache/tex_1e47e2d495c1396d8cdcf2bf9358a819.gif) in case that the replacement reduces the length of the tour (*Note: beware, that 2 edges cannot be incident to the same node)*. The final solution cost of the single 2-opt move can be expressed as ![](/wp-assets/plugins/latex/cache/tex_8cf4a77c6d7a0645af551a905a8380fc.gif)
+
+Algorithm ends in the local optimum, in which no further improving step is found. One two-opt move has time complexity of ![](/wp-assets/plugins/latex/cache/tex_551894444bf3cb0cc8350594310e2e99.gif). In one two opt move in the worst case we need to check for one broke edge ![](/wp-assets/plugins/latex/cache/tex_e1671797c52e15f763380b45e841ec32.gif) ![](/wp-assets/plugins/latex/cache/tex_7e5699ba76c2fc1ab1715729c9301360.gif) other edges that could be broken to improve the tour - thus the ![](/wp-assets/plugins/latex/cache/tex_a6e200f05467fb069772a59842a9f43d.gif). We need to check it for all the edges, therefore we get the equation ![](/wp-assets/plugins/latex/cache/tex_8ce5a8f034dbf725178da83a266627d7.gif).
+
+#### 3-opt algorithm
+
+3-opt algorithm works in the similar fashion. Instead of breaking the tour by removing 2 edges, it removes three edges, therefore breaking the tour into 3 separate sub-tours that can be reconnected in 8 possible ways (including the original tour) as shown on the following figure.
+
+Let's assume that we got a tour that we split up to 3 different subtours. ![](/wp-assets/plugins/latex/cache/tex_206fec924f9317314afc83d56e54b49d.gif), ![](/wp-assets/plugins/latex/cache/tex_e9bdc4be4e3055aafe060c02ed93ed42.gif), ![](/wp-assets/plugins/latex/cache/tex_1b022af27f7e132922a18ec7c6619647.gif). There are 8 possible ways how to reconnect the original subtour ABC.
+
+![](/wp-assets/plugins/latex/cache/tex_081f8892c618546c4092ab72c2b7441b.gif), ![](/wp-assets/plugins/latex/cache/tex_aefa937dcb3cd18e39070e0ff24eebad.gif), ![](/wp-assets/plugins/latex/cache/tex_ec52b1531a275055efc28b0fa3a87a75.gif), ![](/wp-assets/plugins/latex/cache/tex_de9427744ffbc5ff1d657e9215695bba.gif), ![](/wp-assets/plugins/latex/cache/tex_ccffeda118b7c4baa0d93d65fcc71754.gif), ![](/wp-assets/plugins/latex/cache/tex_959aa69e22d120be2e75bb8540408159.gif), ![](/wp-assets/plugins/latex/cache/tex_8ab3c7ebf24aed7493f8096ef5e67a30.gif), ![](/wp-assets/plugins/latex/cache/tex_1f52c5f411dfcca47879eb0b50730f1a.gif) (*Note: Symbol ' defines the reversed segment*).
+
+##### [3opt](/wp-assets/uploads/2019/02/3opt.png)
+
+As you can see, there exists only 4 3-opt moves, namely ![](/wp-assets/plugins/latex/cache/tex_423366f9001e2bdfbbf0299a92c6f993.gif), ![](/wp-assets/plugins/latex/cache/tex_d04738581e882a46f2f30b48d57be630.gif), ![](/wp-assets/plugins/latex/cache/tex_a16841d0d1fd340057bab8e5d7eaebfb.gif) and ![](/wp-assets/plugins/latex/cache/tex_35543475e5c8c9217cd6e2dc603bdb38.gif), ![](/wp-assets/plugins/latex/cache/tex_5103e4039f65f2fe8ca0d883ee7e4c8f.gif) is the original tour and the rest are 2-opt moves (one of three broken edges was reinserted back).
+
+We will choose the best case from all 8 moves, particulary through one function:
+
+```
+def get_solution_cost_change(graph, route, case, i, j, k):
+    A, B, C, D, E, F = route[i - 1], route[i], route[j - 1], route[j], route[k - 1], route[k % len(route)]
+
+   if case == OptCase.opt_case_1:
+        return 0
+   elif case == OptCase.opt_case_2:
+        # second case is the case A'BC
+        return graph[A, B] + graph[E, F] - (graph[B, F] + graph[A, E])
+    elif case == OptCase.opt_case_3:
+        # ABC'
+        return graph[C, D] + graph[E, F] - (graph[D, F] + graph[C, E])
+    elif case == OptCase.opt_case_4:
+        # A'BC'
+        return graph[A, B] + graph[C, D] + graph[E, F] - (graph[A, D] + graph[B, F] + graph[E, C])
+    elif case == OptCase.opt_case_5:
+        # A'B'C
+        return graph[A, B] + graph[C, D] + graph[E, F] - (graph[C, F] + graph[B, D] + graph[E, A])
+    elif case == OptCase.opt_case_6:
+        # AB'C
+        return graph[B, A] + graph[D, C] - (graph[C, A] + graph[B, D])
+    elif case == OptCase.opt_case_7:
+        # AB'C'
+        return graph[A, B] + graph[C, D] + graph[E, F] - (graph[B, E] + graph[D, F] + graph[C, A])
+    elif case == OptCase.opt_case_8:
+        # A'B'C'
+        return graph[A, B] + graph[C, D] + graph[E, F] - (graph[A, D] + graph[C, F] + graph[B, E])
+```
+
+Then, after we get which case of reconnecting the tour is the best, we will need to reverse the segments accordingly:
+
+```
+if (i - 1) < (k % len(route)):
+    first_segment = route[k% len(route):] + route[:i]
+else:
+    first_segment = route[k % len(route):i]
+second_segment = route[i:j]
+third_segment = route[j:k]
+
+if case == OptCase.opt_case_1:
+    # first case is the current solution ABC
+    pass
+elif case == OptCase.opt_case_2:
+    # A'BC
+    solution = list(reversed(first_segment)) + second_segment + third_segment
+elif case == OptCase.opt_case_3:
+    # ABC'
+    solution = first_segment + second_segment + list(reversed(third_segment))
+elif case == OptCase.opt_case_4:
+    # A'BC'
+    solution = list(reversed(first_segment)) + second_segment + list(reversed(third_segment))
+elif case == OptCase.opt_case_5:
+    # A'B'C
+    solution = list(reversed(first_segment)) + list(reversed(second_segment)) + third_segment
+elif case == OptCase.opt_case_6:
+    # AB'C
+    solution = first_segment + list(reversed(second_segment)) + third_segment
+elif case == OptCase.opt_case_7:
+    # AB'C'
+    solution = first_segment + list(reversed(second_segment)) + list(reversed(third_segment))
+elif case == OptCase.opt_case_8:
+    # A'B'C
+    solution = list(reversed(first_segment)) + list(reversed(second_segment)) + list(reversed(third_segment))
+return solution
+```
+
+After that we reiterate the process until no improvements can be made.
+
+Whole code can be found in Python on my [github page](https://github.com/BraveDistribution/pytsp). If you see any improvements can be made, feel free to post it into the comments or make PR directly!
+
+PS: It is not in the scope of this post to describe the 3-opt fully. It is meant to provide the implementation and at least a little bit of description how the code is working. See [2] for more information on this topic.
+
+**Source:**
+
+[1] https://www.sciencedirect.com/science/article/abs/pii/S0377221799002842
+
+[2] https://tsp-basics.blogspot.com/

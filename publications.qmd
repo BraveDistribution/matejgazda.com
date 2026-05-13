@@ -1,0 +1,117 @@
+---
+title: "Publications"
+description: "Peer-reviewed papers and preprints."
+toc: true
+toc-depth: 2
+---
+
+Full lists on
+[Google Scholar](https://scholar.google.com/) and [ORCID](https://orcid.org/).
+Co-authored works span medical imaging, ML for clinical applications, and
+discrete mathematics.
+
+## 2026
+
+- **Towards Brain MRI Foundation Models for the Clinic: Findings from the FOMO25 Challenge.**
+  A. Munk, S. Cerri, V. Nersesjan, C. H. Krag, J. Ambsdorf, P. R. García, et al.
+  *arXiv:2604.11679*, 2026.
+
+## 2025
+
+- **Prospective evaluation of speech as a digital biomarker for covert hepatic encephalopathy.**
+  J. Gazda, J. C. García-Pagán, S. Drazilova, P. Drotar, M. Hires, M. Gazda, et al.
+  *NPJ Digital Medicine*, 2025.
+
+- **Large-scale modality-invariant foundation models for brain MRI analysis: Application to lesion segmentation.**
+  P. Koutsouvelis, M. Gazda, L. Volmer, S. Amirrajab, K. Barbierik, B. Setlak, et al.
+  *arXiv:2511.11311*, 2025.
+
+- **echoGAN: Extending the field of view in transthoracic echocardiography through conditional GAN-based outpainting.**
+  M. Gazda, J. Gazda, S. Kadoury, R. Kanasz, P. Drotar.
+  *Computer Methods and Programs in Biomedicine* 269, 108869, 2025.
+
+- **Utilization of Diffusion Models for Noise Reduction in Ultrasound Images.**
+  B. Setlák, P. Drotar, M. Gazda.
+  *14th International Conference on Image Processing, Theory, Tools and Applications (IPTA)*, 2025.
+
+## 2023
+
+- **Treatment response to ursodeoxycholic acid in primary biliary cholangitis: A systematic review and meta-analysis.**
+  J. Gazda, S. Drazilova, M. Gazda, M. Janicko, T. Koky, M. Macej, M. Carbone, et al.
+  *Digestive and Liver Disease* 55 (10), 1318–1327, 2023.
+
+- **End-To-End Deformable Attention Graph Neural Network for Single-View Liver Mesh Reconstruction.**
+  M. Gazda, P. Drotar, L. V. Romaguera, S. Kadoury.
+  *IEEE 20th International Symposium on Biomedical Imaging (ISBI)*, 1–5, 2023.
+
+## 2022
+
+- **Biomedical image analysis competitions: The state of current participation practice.**
+  M. Eisenmann, A. Reinke, V. Weru, M. D. Tizabi, F. Isensee, T. J. Adler, et al.
+  *arXiv:2212.08568*, 2022.
+
+- **Towards annotation-efficient segmentation via image-to-image translation.**
+  E. Vorontsov, P. Molchanov, M. Gazda, C. Beckham, J. Kautz, S. Kadoury.
+  *Medical Image Analysis* 82, 102624, 2022.
+
+- **Comparison of CNN-learned vs. handcrafted features for detection of Parkinson's disease dysgraphia in a multilingual dataset.**
+  Z. Galaz, P. Drotar, J. Mekyska, M. Gazda, J. Mucha, V. Zvoncak, Z. Smekal, et al.
+  *Frontiers in Neuroinformatics* 16, 877139, 2022.
+
+- **Convolutional neural network ensemble for Parkinson's disease detection from voice recordings.**
+  M. Hireš, M. Gazda, P. Drotár, N. D. Pah, M. A. Motin, D. K. Kumar.
+  *Computers in Biology and Medicine* 141, 105021, 2022.
+
+- **Voice-specific augmentations for Parkinson's disease detection using deep convolutional neural network.**
+  M. Hireš, M. Gazda, L. Vavrek, P. Drotár.
+  *IEEE 20th Jubilee World Symposium on Applied Machine Intelligence and Informatics (SAMI)*, 2022.
+
+- **Brief overview of neural networks for medical applications.**
+  M. Hireš, P. Bugata, M. Gazda, D. J. Hreško, R. Kanász, L. Vavrek, P. Drotár.
+  *Acta Electrotechnica et Informatica* 22 (2), 34–44, 2022.
+
+- **Ensemble of convolutional neural networks for Parkinson's disease diagnosis from offline handwriting.**
+  M. Gazda, M. Hireš, P. Drotár.
+  *Computing and Informatics*, 2022.
+
+- **Mixup Augmentation for Kidney and Kidney Tumor Segmentation.**
+  M. Gazda, P. Bugata, J. Gazda, D. Hubacek, D. J. Hresko, P. Drotar.
+  *Kidney and Kidney Tumor Segmentation: MICCAI 2021 Challenge (KiTS 2021)*, 2022.
+
+## 2021
+
+- **Self-supervised deep convolutional neural network for chest X-ray classification.**
+  M. Gazda, J. Plavka, J. Gazda, P. Drotar.
+  *IEEE Access* 9, 151972–151982, 2021.
+
+- **Multiple-fine-tuned convolutional neural networks for Parkinson's disease diagnosis from offline handwriting.**
+  M. Gazda, M. Hireš, P. Drotár.
+  *IEEE Transactions on Systems, Man, and Cybernetics: Systems* 52 (1), 78–89, 2021.
+
+- **Artificial intelligence and its application to minimal hepatic encephalopathy diagnosis.**
+  J. Gazda, P. Drotar, S. Drazilova, J. Gazda, M. Gazda, M. Janicko, P. Jarcuska.
+  *Journal of Personalized Medicine* 11 (11), 1090, 2021.
+
+- **External validation of UDCA response score in Slovak and Croatian patients with primary biliary cholangitis.**
+  J. Gazda, M. Janicko, S. Drazilova, I. Grgurevic, T. F. Kanizaj, T. Koller, et al.
+  *Canadian Journal of Gastroenterology and Hepatology* 2021 (1), 9928065, 2021.
+
+- **Generalized eigenproblem of interval max-min (fuzzy) matrices.**
+  J. Plavka, M. Gazda.
+  *Fuzzy Sets and Systems* 410, 27–44, 2021.
+
+- **Controllable and tolerable generalized eigenvectors of interval max-plus matrices.**
+  M. Gazda, J. Plavka.
+  *Kybernetika* 57 (6), 922–938, 2021.
+
+## 2019
+
+- **Ensemble feature selection using election methods and ranker clustering.**
+  P. Drotár, M. Gazda, L. Vokorokos.
+  *Information Sciences* 480, 365–380, 2019.
+
+## 2017
+
+- **Heterogeneous ensemble feature selection based on weighted Borda count.**
+  P. Drotár, M. Gazda, J. Gazda.
+  *9th International Conference on Information Technology and Electrical Engineering (ICITEE)*, 2017.
