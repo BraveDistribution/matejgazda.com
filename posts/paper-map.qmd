@@ -1,7 +1,7 @@
 ---
 title: "Paper Map: NeurIPS / CVPR / ICLR / ICML 2024–2025"
-date: 2026-05-13
-description: "Interactive 2D map of ~26,700 papers from the top ML/CV venues."
+date: 2026-05-14
+description: "Interactive 2D map of 26,741 accepted papers from the top ML/CV venues."
 categories: [tools, literature, visualization]
 image: /wp-assets/uploads/2019/02/3opt.png
 image-alt: "Interactive paper map preview"
@@ -9,7 +9,18 @@ page-layout: full
 toc: false
 ---
 
-Open full screen: [papers_map.html](/papers_map.html).
+Most of AI research in 2024–2025 is LLMs and diffusion. Even more skewed than
+I expected.
+
+I pulled the accepted-paper lists from CVPR, NeurIPS, ICML, and ICLR for 2024
+and 2025 (main tracks only, no workshops). For each paper I took the title and
+abstract, embedded them, projected to 2D with UMAP, then ran HDBSCAN to find
+clusters. Cluster names come from the most distinctive words in the titles.
+**26,741 papers, 509 clusters.** Snapshot from May 2026.
+
+Every dot is a paper. Nearby dots are about similar topics. Hover for the
+title, click the venue buttons to filter, zoom with the mouse. Full screen
+view: [papers_map.html](/papers_map.html).
 
 <iframe
   src="/papers_map.html"
@@ -19,3 +30,82 @@ Open full screen: [papers_map.html](/papers_map.html).
   loading="lazy"
   title="Interactive paper map">
 </iframe>
+
+## What's actually big
+
+The biggest clusters each sit between 200 and 300 papers. Grouped roughly:
+
+**Language**
+
+- RLHF and preference alignment
+- LLM agents and code generation
+- LLM reasoning, math, chain-of-thought
+- In-context learning, induction heads
+- LoRA and parameter-efficient fine-tuning
+
+**Vision**
+
+- Video understanding and temporal grounding
+- Human motion and hand interaction
+- Text-to-image generation
+- 3D Gaussian splatting
+- Diffusion sampling, consistency models, flow matching
+
+**Methods, RL, theory**
+
+- Continual / class-incremental learning
+- Linear attention and state-space models (Mamba etc.)
+- Federated learning
+- World models and goal-conditioned RL
+- Multi-agent RL, offline RL
+- Differential privacy, membership inference attacks
+- Conformal prediction, spiking neural networks
+- Molecular ML and drug discovery
+
+Crowded but a step down: time-series forecasting, point cloud segmentation,
+LiDAR/radar detection, pruning and sparsity. There's also a surprisingly fat
+cluster around grokking, two-layer networks, and Kolmogorov-Arnold things,
+which I read as the small-theory subfield being healthier than people give
+it credit for.
+
+## Where almost nobody is
+
+Tiny clusters, 7-10 papers each, the kind of niche where you can read
+everything in a weekend:
+
+- Text-to-SQL
+- Event-based vision and depth
+- Face restoration and rigging
+- Protein conformational dynamics
+- Link prediction
+- DNA regulatory sequence design
+- Counterfactual generation
+- Self-supervised equivariance
+
+A few subfields barely register at these four venues. Event cameras and DNA
+sequence design are good examples. Either the community is publishing at
+specialized venues (NeurIPS Datasets & Benchmarks, MICCAI, ISMB, CVPR
+workshops), or there genuinely isn't enough work to fill a session.
+
+## How I'd use it
+
+- Before writing "to the best of our knowledge, this is the first..." in a
+  draft, find your cluster and skim the five nearest neighbors. Saves
+  embarrassing reviewer comments.
+- If you're picking a PhD topic, look for small islands sitting next to a big
+  cluster. That's usually a gap with a path back to the mainline.
+- If you're reviewing, the map is a fast sanity check on the "underexplored"
+  framing in someone's introduction.
+
+## Caveats
+
+Embedding clusters reflect title and abstract wording. Two papers can sit in
+the same cluster and be doing completely different things, just because they
+share buzzwords. Two papers can sit far apart and be closer in practice than
+the map suggests. Use this as a starting point, not as a literature review.
+
+Missing on purpose: workshops, datasets-and-benchmarks tracks, ACL, EMNLP,
+MICCAI, ISBI. Medical imaging venues are next on my list.
+
+If your cluster looks wrong or you spot a paper that's clearly mislabeled,
+ping me on [GitHub](https://github.com/BraveDistribution). I'll rerun it.
