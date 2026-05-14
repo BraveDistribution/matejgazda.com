@@ -1,7 +1,7 @@
 ---
 title: "Paper Map: NeurIPS / CVPR / ICLR / ICML 2024–2025"
 date: 2026-05-13
-description: "Interactive 2D map of ~9,600 papers from the top ML/CV venues."
+description: "Interactive 2D map of ~26,700 papers from the top ML/CV venues."
 categories: [tools, literature, visualization]
 image: /wp-assets/uploads/2019/02/3opt.png
 image-alt: "Interactive paper map preview"
