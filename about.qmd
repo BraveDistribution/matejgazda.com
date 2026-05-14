@@ -34,12 +34,6 @@ I moved into AI research after several years in software engineering, where I
 worked on production ML systems and distributed services. That mix shows up
 here: most of what I write tries to be both rigorous and runnable.
 
-## This site
-
-The blog archive (`tag: legacy`) contains the earliest posts from 2017–2019,
-ported from the WordPress version of this site. Everything new will live in
-[Writing](posts/index.qmd).
-
 ## Get in touch
 
 - GitHub: [BraveDistribution](https://github.com/BraveDistribution)
