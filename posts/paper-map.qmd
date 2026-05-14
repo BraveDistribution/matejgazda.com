@@ -9,8 +9,8 @@ page-layout: full
 toc: false
 ---
 
-Most of AI research in 2024–2025 is LLMs and diffusion. Even more skewed than
-I expected.
+Most of AI research in 2024–2025 is LLMs and diffusion. The imbalance is
+bigger than I expected.
 
 I pulled the accepted-paper lists from CVPR, NeurIPS, ICML, and ICLR for 2024
 and 2025 (main tracks only, no workshops). For each paper I took the title and
@@ -89,9 +89,9 @@ workshops), or there genuinely isn't enough work to fill a session.
 
 ## How I'd use it
 
-- Before writing "to the best of our knowledge, this is the first..." in a
-  draft, find your cluster and skim the five nearest neighbors. Saves
-  embarrassing reviewer comments.
+- If you're about to claim your idea is new, look up where it would land on
+  the map and read the closest five papers first. Cheaper than finding out
+  during rebuttal.
 - If you're picking a PhD topic, look for small islands sitting next to a big
   cluster. That's usually a gap with a path back to the mainline.
 - If you're reviewing, the map is a fast sanity check on the "underexplored"
