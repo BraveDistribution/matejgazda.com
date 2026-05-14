@@ -19,11 +19,10 @@ about:
 toc: false
 ---
 
-I am Matej Gazda, an AI researcher at the [Technical University of
-Košice](https://www.tuke.sk/). My research focuses on machine learning for
-medical imaging: how to build models that are accurate, calibrated, and
-trustworthy in clinical settings where data is scarce and the cost of being
-wrong is high.
+I am Matej Gazda, an **AI researcher and consultant** working on machine
+learning for medical imaging: how to build models that are accurate,
+calibrated, and trustworthy in clinical settings where data is scarce and the
+cost of being wrong is high.
 
 ## Research interests
 
@@ -34,10 +33,9 @@ wrong is high.
 
 ## Background
 
-I joined the Technical University of Košice as a researcher after several years
-in software engineering, where I worked on production ML systems and
-distributed services. That mix shows up here: most of what I write tries to be
-both rigorous and runnable.
+I moved into AI research after several years in software engineering, where I
+worked on production ML systems and distributed services. That mix shows up
+here: most of what I write tries to be both rigorous and runnable.
 
 ## This site
 

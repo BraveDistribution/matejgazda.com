@@ -1,6 +1,6 @@
 ---
 title: "Matej Gazda"
-subtitle: "Machine learning · Medical imaging · Technical University of Košice"
+subtitle: "Artificial Intelligence | Medical Imaging"
 image: assets/avatar.jpg
 image-alt: "Portrait of Matej Gazda"
 about:
@@ -30,10 +30,9 @@ page-layout: full
 toc: false
 ---
 
-I am an AI researcher at the [Technical University of Košice](https://www.tuke.sk/).
-My work sits at the intersection of **machine learning** and **medical imaging**,
-with a long-standing curiosity for the engineering and statistical foundations
-that make modern ML work.
+I am an **AI researcher and consultant** working at the intersection of
+**machine learning** and **medical imaging**, with a long-standing curiosity
+for the engineering and statistical foundations that make modern ML work.
 
 This is the slow-form home for my [writing](posts/index.qmd),
 [publications](publications.qmd), and [projects](projects.qmd).
