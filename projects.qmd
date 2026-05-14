@@ -8,7 +8,7 @@ toc: true
 
 Travelling Salesman Problem algorithms in Python: 2-opt, 3-opt, and the
 Christofides 1.5-approximation. Originally written as a teaching/reference
-implementation, still occasionally cited.
+implementation, still occasionally used.
 
 [GitHub →](https://github.com/BraveDistribution/pytsp)
 
