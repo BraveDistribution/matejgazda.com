@@ -13,9 +13,6 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/matej-gazda-579a36100/
-    - icon: rss
-      text: RSS
-      href: posts/index.xml
 toc: false
 ---
 

@@ -39,9 +39,6 @@ website:
       - icon: github
         href: https://github.com/BraveDistribution
         aria-label: GitHub
-      - icon: rss
-        href: posts/index.xml
-        aria-label: RSS feed
   page-footer:
     border: false
     background: light
@@ -53,8 +50,6 @@ website:
     right:
       - icon: github
         href: https://github.com/BraveDistribution
-      - icon: rss
-        href: posts/index.xml
 
 format:
   html:

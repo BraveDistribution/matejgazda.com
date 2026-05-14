@@ -11,9 +11,6 @@ about:
     - icon: github
       text: GitHub
       href: https://github.com/BraveDistribution
-    - icon: rss
-      text: RSS
-      href: posts/index.xml
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/matej-gazda-579a36100/
