@@ -60,9 +60,6 @@ Snapshot from May 2026.
 
 ## Why this is worth ten minutes
 
-I work at a small European university, and I wanted a sober view of where
-the gravity is in 2025 ML, not where US News thinks it should be.
-
 The graph is most useful if you do one of these things. (a) Pick a dream
 lab. The orange edges out of it are the labs that actually share students
 and code with it. Those are your real second-choice options. (b) Going to
