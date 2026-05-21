@@ -1,5 +1,5 @@
 ---
-title: "Northwestern publishes more with China than with the rest of the US. And other things I found mapping 26,556 ML papers."
+title: "Northwestern's closest ML collaborators are in China. And other things I found mapping 26,556 papers."
 date: 2026-05-20
 description: "I parsed the affiliations off every NeurIPS, CVPR, ICLR, and ICML paper from 2024–2025 and drew the co-authorship graph. Here's what the structure of ML research actually looks like."
 categories: [tools, literature, visualization]
@@ -18,17 +18,22 @@ communities by Leiden.
 
 A few things popped out that I didn't expect.
 
-1. Seven of the top ten labs are Chinese. Tsinghua is #1 at 1,202 papers,
-   50% ahead of Berkeley at #4. CVPR's top 10 has zero US institutions.
-2. Northwestern doesn't sit in the US cluster on the graph. It sits in the
-   China cluster, because its topic mix (16% LLMs, 45% vision) looks like
-   Tsinghua's, not CMU's.
-3. The biggest cross-cluster bridge is CMU ↔ MBZUAI (77 papers), and 19%
-   of those joint papers are on causal inference. No other top bridge
-   looks like that. Schölkopf's Tübingen-MBZUAI-CMU pipeline is in the data.
-4. Every top Chinese lab is up 30–80% year over year. Google Research is
-   down 36%, MSR Asia down 27%. NVIDIA is the only US industry lab still
-   growing (+47%).
+1. A handful of labs end up in the "wrong" community on the graph, and
+   each one tells you something. Northwestern, for example, sits with the
+   Chinese universities. Its closest co-authors are HKU, Tsinghua, HKUST,
+   NTU, Zhejiang. On topic mix it looks like Tsinghua (vision-heavy),
+   not like CMU (LLM-balanced).
+2. The biggest cross-cluster bridge in the whole graph is CMU ↔ MBZUAI
+   (77 papers), and 19% of those joint papers are on causal inference.
+   No other top bridge looks like that. Schölkopf's Tübingen-MBZUAI-CMU
+   pipeline is right there in the data.
+3. Tsinghua is the single largest publisher in the corpus at 1,202 papers,
+   ahead of Berkeley (#4, 781) and Stanford (#5, 758). The top 15 has a
+   roughly even mix of US, Chinese, European, and Asian institutions.
+4. Year-over-year, the biggest movers are Chinese universities and
+   NVIDIA (up sharply), and the corporate research labs of the 2018–2022
+   era (Google Research, MSR Asia, Tencent AI Lab, all down 25–50%). US
+   academia is roughly flat.
 
 The map is below. Click any node to see who it actually collaborates with.
 Full screen: [lab_network.html](/lab_network.html).
@@ -77,11 +82,11 @@ Mostly geographic, with one big exception.
   NVIDIA. The only cluster where academia and industry share one social
   network (~12% industry). DeepMind sits here despite being in London,
   which is the least surprising mismatch on the map.
-- **🟠 China (155 labs).** Tsinghua, Zhejiang, Peking, SJTU, CAS, HKU, NTU
-  Singapore, HKUST. Singapore and Hong Kong are firmly in China by
-  co-authorship, not in any "Asia" bucket. Alibaba / ByteDance / Tencent
-  collaborate diffusely, not through a few elite pairs the way US industry
-  often does.
+- **🟠 China + HK / Singapore (155 labs).** Tsinghua, Zhejiang, Peking,
+  SJTU, CAS, HKU, NTU Singapore, HKUST. Singapore and Hong Kong
+  institutions cluster here by co-authorship, not in a separate Asia
+  bucket. Alibaba / ByteDance / Tencent collaborate diffusely, not through
+  a few elite pairs the way US industry often does.
 - **🟢 Europe (99 labs).** Oxford, Max Planck, ETH, Cambridge, TU Munich,
   UCL, Inria. Almost no industry (2%). Europe's industry ties run through
   DeepMind and US labs, not internally.
@@ -105,10 +110,11 @@ Mostly geographic, with one big exception.
 | 7 | Shanghai AI Lab 192 | Stanford 262 | SJTU 190 | Max Planck 68 |
 | 8 | NTU Singapore 178 | CAS 259 | DeepMind 183 | Google Research 59 |
 
-CVPR is structurally a Chinese venue now. Zero US institutions in its top
-10. Berkeley first appears at #14. Tsinghua sits on 6.2% of CVPR papers.
+CVPR's top of the ranking is dominated by Chinese universities. Tsinghua
+alone sits on 6.2% of CVPR papers. Berkeley, the highest-ranked US
+institution at CVPR, first appears at #14.
 
-ICML is the most US-leaning. Its top 10 is Berkeley, Stanford, Oxford,
+ICML leans the other way: its top 10 is Berkeley, Stanford, Oxford,
 Google, UC Boulder, Zhejiang, Max Planck, Google Research, OpenAI,
 University of Washington.
 
@@ -135,22 +141,23 @@ split. If you want one venue that tracks "global ML", it's NeurIPS.
 | 14 | Oxford | 486 |
 | 15 | KAIST | 462 |
 
-Seven of the top ten are Chinese. Tsinghua is 54% ahead of #4 Berkeley.
+Tsinghua sits 54% ahead of Berkeley by paper count. Berkeley, Stanford,
+CMU, Oxford and KAIST are all in the top 15 alongside the Chinese hubs.
 
 The strongest *internal* edges (joint papers, same cluster): SJTU ↔
 Shanghai AI Lab 145, Tsinghua ↔ Shanghai AI Lab 126, Toronto ↔ Vector 121,
-Tsinghua ↔ Peking 110, Berkeley ↔ Stanford 101. Shanghai AI Lab is in four
-of the top ten internal edges. There's no US lab that plays that
-coordinating role on the US side.
+Tsinghua ↔ Peking 110, Berkeley ↔ Stanford 101. Shanghai AI Lab appears in
+four of the top ten internal edges. It plays a coordinating role in its
+cluster that no single US lab plays on the US side.
 
 The strongest *cross-cluster* bridges: CMU ↔ MBZUAI 77, Tsinghua ↔ MSR 37,
 Tsinghua ↔ CMU 29, Tsinghua ↔ Berkeley 28, Tsinghua ↔ Stanford 26, MBZUAI
-↔ UCSD 25, Tsinghua ↔ Bosch 23. Tsinghua is the most outward-facing
-Chinese lab by a wide margin.
+↔ UCSD 25, Tsinghua ↔ Bosch 23. Tsinghua has by far the most external
+co-authorship across clusters.
 
 One stat that surprised me: **Zhejiang ↔ Alibaba is 77 papers**, second
-only to DeepMind ↔ Google Research in the whole corpus. There is no US
-academic ↔ industry pair anywhere close to that.
+only to DeepMind ↔ Google Research in the whole corpus. No US academic ↔
+industry pair is close to that volume.
 
 ## Labs whose flag doesn't match their color
 
@@ -158,9 +165,9 @@ Flag is where the building is. Color is who they actually publish with.
 When the two disagree, you learn something about the lab.
 
 - **🇺🇸 Northwestern (China cluster).** Top co-authors are HKU 12, Tsinghua
-  12, HKUST 9, NTU 9, Zhejiang 8, Princeton 8, SJTU 7. Nine out of ten are
-  Chinese institutions. Only Princeton is US. Network-wise Northwestern
-  is in the China camp, full stop.
+  12, HKUST 9, NTU 9, Zhejiang 8, Princeton 8, SJTU 7. Nine out of ten
+  are Chinese institutions. Only Princeton is US. By co-authorship,
+  Northwestern sits in the China cluster.
 - **🇬🇧 DeepMind (US cluster).** London building, Mountain View social
   graph.
 - **🇮🇱 Technion / Tel Aviv / Weizmann (US cluster).** Israeli ML is
@@ -171,28 +178,30 @@ When the two disagree, you learn something about the lab.
 
 ## 2024 vs 2025
 
-Splitting the corpus by year, the gap is wide.
+Splitting the corpus by year shows a few clear movers.
 
 ![Risers and fallers, 2024 to 2025. Counts are accepted papers at NeurIPS, CVPR, ICLR, ICML.](/assets/lab-network-delta.png)
 
-The Chinese growth is not subtle. Every top Chinese university is up 30 to
-80% in a single year. Peking +53%, CAS +69%, HKU +63%, Nanjing +74%, Sun
-Yat-sen +83%. Tsinghua a more modest +29%, but off a much bigger base.
+Most Chinese universities posted big year-over-year gains. Peking +53%,
+CAS +69%, HKU +63%, Nanjing +74%, Sun Yat-sen +83%. Tsinghua a more
+modest +29%, but off a much bigger base.
 
-On the other side, the great industry research lab era of 2018–2022 is
-visibly contracting at top venues. Google Research is down 36% (−86
-papers). Tencent AI Lab down 48%. MSR Asia down 27%. SenseTime down 29%.
+On the industry side, several of the headline 2018–2022 corporate research
+labs are publishing less at these venues. Google Research is down 36%
+(−86 papers). Tencent AI Lab down 48%. MSR Asia down 27%. SenseTime
+down 29%.
 
-NVIDIA is the one US industry lab going the other way. +47%, +74 papers.
-It publishes like an academic group now.
+NVIDIA is the one industry lab going the other way. +47%, +74 papers. It
+now publishes more like an academic group than a corporate one.
 
 Harvard +60% (+86 papers), the biggest US academic gain in absolute terms.
 Kempner hires plus a big LLM push.
 
-KAIST +28%, the only non-Chinese Asian school keeping pace.
+KAIST +28%, the strongest non-Chinese Asian gain.
 
-The one-liner: US academia is flat, Chinese academia is accelerating, and
-US industry research splits into NVIDIA up and everyone else down.
+The one-liner: US academia is roughly flat, Chinese academia is growing
+fast, and corporate research is splitting into NVIDIA up and most others
+down.
 
 ## What each bridge actually publishes on
 
