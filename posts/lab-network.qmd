@@ -1,0 +1,275 @@
+---
+title: "Northwestern publishes more with China than with the rest of the US. And other things I found mapping 26,556 ML papers."
+date: 2026-05-20
+description: "I parsed the affiliations off every NeurIPS, CVPR, ICLR, and ICML paper from 2024–2025 and drew the co-authorship graph. Here's what the structure of ML research actually looks like."
+categories: [tools, literature, visualization]
+image: /assets/lab-network-preview.png
+image-alt: "Graph of 476 ML institutions linked by co-authored papers, five colored communities"
+page-layout: full
+toc: false
+draft: true
+---
+
+I spent a weekend running a small local LLM over the first page of every
+NeurIPS, CVPR, ICLR, and ICML PDF from 2024 and 2025, pulled the author
+affiliations off each one, and drew the graph. That's 26,556 unique papers,
+476 institutions in the main component, 5,800 co-authorship edges, five
+communities by Leiden.
+
+A few things popped out that I didn't expect.
+
+1. Seven of the top ten labs are Chinese. Tsinghua is #1 at 1,202 papers,
+   50% ahead of Berkeley at #4. CVPR's top 10 has zero US institutions.
+2. Northwestern doesn't sit in the US cluster on the graph. It sits in the
+   China cluster, because its topic mix (16% LLMs, 45% vision) looks like
+   Tsinghua's, not CMU's.
+3. The biggest cross-cluster bridge is CMU ↔ MBZUAI (77 papers), and 19%
+   of those joint papers are on causal inference. No other top bridge
+   looks like that. Schölkopf's Tübingen-MBZUAI-CMU pipeline is in the data.
+4. Every top Chinese lab is up 30–80% year over year. Google Research is
+   down 36%, MSR Asia down 27%. NVIDIA is the only US industry lab still
+   growing (+47%).
+
+The map is below. Click any node to see who it actually collaborates with.
+Full screen: [lab_network.html](/lab_network.html).
+
+<iframe
+  src="/lab_network.html"
+  width="100%"
+  height="900"
+  style="border:1px solid var(--bs-border-color); border-radius:10px;"
+  loading="lazy"
+  title="Interactive lab network">
+</iframe>
+
+## What's in the data
+
+Same corpus as the [paper map](/posts/paper-map.html): NeurIPS, CVPR, ICLR,
+ICML, main tracks only, 2024 and 2025. The previous post showed *what* this
+research is about. This one shows *who* is doing it, with whom.
+
+Each node is an institution. Two nodes are connected if they share at least
+one accepted paper. Edge weight is the number of joint papers. Communities
+are Leiden on the weighted graph. Layout is Fruchterman-Reingold with
+community centroids pulled apart so the structure stays legible.
+
+26,556 unique papers. ~24,300 with at least one parsed affiliation. 476
+institutions in the main component after dropping the tail below 15 papers.
+5,800 co-authorship edges, 2,217 of them crossing community boundaries.
+Snapshot from May 2026.
+
+## Why this is worth ten minutes
+
+I work at a small European university, and I wanted a sober view of where
+the gravity is in 2025 ML, not where US News thinks it should be.
+
+The graph is most useful if you do one of these things. (a) Pick a dream
+lab. The orange edges out of it are the labs that actually share students
+and code with it. Those are your real second-choice options. (b) Going to
+a conference? The lit-up neighbours of your group are who to grab coffee
+with. The dark nodes are cold calls. (c) Writing a grant with four
+"international" co-PIs that all sit in one Leiden community? That's not
+international. (d) Building a reviewer pool? An AC roster from a single
+community will have blind spots.
+
+## The five clusters
+
+Mostly geographic, with one big exception.
+
+- **🔵 US + Big Tech (161 labs).** Berkeley, Stanford, CMU, MIT, DeepMind,
+  NVIDIA. The only cluster where academia and industry share one social
+  network (~12% industry). DeepMind sits here despite being in London,
+  which is the least surprising mismatch on the map.
+- **🟠 China (155 labs).** Tsinghua, Zhejiang, Peking, SJTU, CAS, HKU, NTU
+  Singapore, HKUST. Singapore and Hong Kong are firmly in China by
+  co-authorship, not in any "Asia" bucket. Alibaba / ByteDance / Tencent
+  collaborate diffusely, not through a few elite pairs the way US industry
+  often does.
+- **🟢 Europe (99 labs).** Oxford, Max Planck, ETH, Cambridge, TU Munich,
+  UCL, Inria. Almost no industry (2%). Europe's industry ties run through
+  DeepMind and US labs, not internally.
+- **🔴 Asia / Middle East / Oceania (43 labs).** MBZUAI, Tokyo, Sydney,
+  RIKEN, KAUST, ANU. The leftover bin. MBZUAI is the most balanced bridge
+  node on the whole map.
+- **🟣 Korea (18 labs).** KAIST, SNU, Yonsei, Samsung, Naver. Tight,
+  internal. 6 papers bridge to Asia/MidEast, 30 to China, almost
+  everything else stays inside.
+
+## The four venues aren't interchangeable
+
+| Rank | CVPR (5,427) | NeurIPS (9,314) | ICLR (5,941) | ICML (5,874) |
+|---|---|---|---|---|
+| 1 | Tsinghua 339 | Tsinghua 479 | Tsinghua 338 | Berkeley 238 |
+| 2 | Zhejiang 262 | Peking 352 | Peking 240 | Stanford 162 |
+| 3 | Peking 231 | SJTU 326 | CMU 236 | Oxford 125 |
+| 4 | SJTU 230 | Zhejiang 311 | Stanford 224 | Google 96 |
+| 5 | CAS 220 | CMU 278 | Berkeley 222 | UC Boulder 79 |
+| 6 | HKU 194 | HKU 268 | Zhejiang 191 | Zhejiang 79 |
+| 7 | Shanghai AI Lab 192 | Stanford 262 | SJTU 190 | Max Planck 68 |
+| 8 | NTU Singapore 178 | CAS 259 | DeepMind 183 | Google Research 59 |
+
+CVPR is structurally a Chinese venue now. Zero US institutions in its top
+10. Berkeley first appears at #14. Tsinghua sits on 6.2% of CVPR papers.
+
+ICML is the most US-leaning. Its top 10 is Berkeley, Stanford, Oxford,
+Google, UC Boulder, Zhejiang, Max Planck, Google Research, OpenAI,
+University of Washington.
+
+DeepMind makes only one venue's top 10 (ICLR). NeurIPS is the most evenly
+split. If you want one venue that tracks "global ML", it's NeurIPS.
+
+## Top 15 by accepted papers
+
+| Rank | Institution | Papers |
+|---|---|---:|
+| 1 | Tsinghua | 1,202 |
+| 2 | Zhejiang | 843 |
+| 3 | Peking | 827 |
+| 4 | UC Berkeley | 781 |
+| 5 | Stanford | 758 |
+| 6 | SJTU | 749 |
+| 7 | CAS | 668 |
+| 8 | CMU | 650 |
+| 9 | HKU | 619 |
+| 10 | HKUST | 591 |
+| 11 | NTU Singapore | 571 |
+| 12 | Shanghai AI Lab | 548 |
+| 13 | Nanjing | 503 |
+| 14 | Oxford | 486 |
+| 15 | KAIST | 462 |
+
+Seven of the top ten are Chinese. Tsinghua is 54% ahead of #4 Berkeley.
+
+The strongest *internal* edges (joint papers, same cluster): SJTU ↔
+Shanghai AI Lab 145, Tsinghua ↔ Shanghai AI Lab 126, Toronto ↔ Vector 121,
+Tsinghua ↔ Peking 110, Berkeley ↔ Stanford 101. Shanghai AI Lab is in four
+of the top ten internal edges. There's no US lab that plays that
+coordinating role on the US side.
+
+The strongest *cross-cluster* bridges: CMU ↔ MBZUAI 77, Tsinghua ↔ MSR 37,
+Tsinghua ↔ CMU 29, Tsinghua ↔ Berkeley 28, Tsinghua ↔ Stanford 26, MBZUAI
+↔ UCSD 25, Tsinghua ↔ Bosch 23. Tsinghua is the most outward-facing
+Chinese lab by a wide margin.
+
+One stat that surprised me: **Zhejiang ↔ Alibaba is 77 papers**, second
+only to DeepMind ↔ Google Research in the whole corpus. There is no US
+academic ↔ industry pair anywhere close to that.
+
+## Labs whose flag doesn't match their color
+
+Flag is where the building is. Color is who they actually publish with.
+When the two disagree, you learn something about the lab.
+
+- **🇺🇸 Northwestern (China cluster).** Top co-authors are HKU 12, Tsinghua
+  12, HKUST 9, NTU 9, Zhejiang 8, Princeton 8, SJTU 7. Nine out of ten are
+  Chinese institutions. Only Princeton is US. Network-wise Northwestern
+  is in the China camp, full stop.
+- **🇬🇧 DeepMind (US cluster).** London building, Mountain View social
+  graph.
+- **🇮🇱 Technion / Tel Aviv / Weizmann (US cluster).** Israeli ML is
+  structurally a US sub-network. Every senior group I checked has more US
+  than local co-authors.
+- **🇺🇸 Intel Labs (Europe cluster).** Intel Munich plus ETH / EPFL ties
+  dominate its publishing footprint.
+
+## 2024 vs 2025
+
+Splitting the corpus by year, the gap is wide.
+
+![Risers and fallers, 2024 to 2025. Counts are accepted papers at NeurIPS, CVPR, ICLR, ICML.](/assets/lab-network-delta.png)
+
+The Chinese growth is not subtle. Every top Chinese university is up 30 to
+80% in a single year. Peking +53%, CAS +69%, HKU +63%, Nanjing +74%, Sun
+Yat-sen +83%. Tsinghua a more modest +29%, but off a much bigger base.
+
+On the other side, the great industry research lab era of 2018–2022 is
+visibly contracting at top venues. Google Research is down 36% (−86
+papers). Tencent AI Lab down 48%. MSR Asia down 27%. SenseTime down 29%.
+
+NVIDIA is the one US industry lab going the other way. +47%, +74 papers.
+It publishes like an academic group now.
+
+Harvard +60% (+86 papers), the biggest US academic gain in absolute terms.
+Kempner hires plus a big LLM push.
+
+KAIST +28%, the only non-Chinese Asian school keeping pace.
+
+The one-liner: US academia is flat, Chinese academia is accelerating, and
+US industry research splits into NVIDIA up and everyone else down.
+
+## What each bridge actually publishes on
+
+The graph tells you who works with whom. It doesn't tell you on what.
+
+To get the topics I joined the affiliations data with the cluster
+assignments from [the paper map](/posts/paper-map.html), so each joint
+paper carries both an institution pair and a topic label (one of 377
+clusters from the embeddings, rolled up into broader themes).
+
+![Topic mix per institution. Vision vs LLMs.](/assets/lab-network-topics-by-inst.png)
+
+The single most surprising plot for me: **Northwestern's topic profile
+looks like Tsinghua, not like CMU.** 16% LLMs, 45% vision and 3D. The US
+peers (Berkeley, Stanford, CMU) sit near 50/50 on LLMs and vision. Oxford
+and MBZUAI tilt heavily to vision. DeepMind is the LLM specialist of the
+top labs in the corpus.
+
+Northwestern's "wrong" community label on the graph isn't a glitch. It's
+a topic match.
+
+The bridges sharpen the picture:
+
+![Topic mix per bridge. LLM share descending.](/assets/lab-network-topics.png)
+
+- Tsinghua's US bridges are LLM pipelines. Berkeley 56%, Stanford 50%, MSR
+  50%, DeepMind/Oxford 44%. If you want to know what a joint NeurIPS paper
+  between Tsinghua and a US group looks like in 2025, the honest answer is
+  "an LLM paper".
+- CMU ↔ MBZUAI is the weirdest top bridge. 24% LLMs and 19% causal
+  inference. No other top bridge has that causal share. Schölkopf's
+  Tübingen-MBZUAI-CMU axis is right there in the data.
+- Northwestern's China bridges are vision, not language. Northwestern ↔
+  HKUST is 75% vision and 3D. Northwestern ↔ Tsinghua is 50% vision plus
+  17% medical. Near-zero LLM share. That's a SIGGRAPH-adjacent CVPR
+  pipeline, not a language model pipeline.
+- Shanghai AI Lab is the most balanced node. Its bridges spread across
+  LLMs, diffusion, 3D, video and vision in single-digit-percent steps,
+  which is why it shows up in four of the top ten internal edges.
+
+The useful version of the Northwestern story: they publish with China on
+vision and 3D. If you're a vision PhD heading to HKUST on exchange, you're
+walking into an existing pipeline. If you're an LLM PhD, you're cold
+calling.
+
+## How to read the picture in 30 seconds
+
+- Five blobs = five social communities, not five countries.
+- Bigger dot = more accepted papers.
+- Grey edges live inside a community. Orange edges cross communities.
+- Edge thickness is the count of shared papers.
+- A lab with many orange edges is a bridge institution. Those are where
+  ideas move between camps.
+
+## Caveats
+
+The big one: affiliations were parsed by a small local LLM from the first
+page of each PDF. It gets the obvious cases right (Stanford, Tsinghua,
+DeepMind), but it misses on long footer affiliations, non-standard
+transliterations, and papers where authors list four affiliations each. I
+added a canonicalization layer (anchor dictionary plus fuzzy merge), but
+small labs are still fragmented and the very top labs are probably
+inflated by a few percent. I also dropped institutions with fewer than 15
+papers to keep the graph readable, which cuts the universe from ~10,000
+raw strings down to 483 nodes.
+
+Country tagging is keyed off a hardcoded name → ISO list, so the country
+filter is incomplete for the long tail. About a third of nodes have no
+country code and won't show up under any country button.
+
+Missing on purpose: workshops, datasets-and-benchmarks tracks, ACL, EMNLP,
+MICCAI, ISBI. Same scope as the paper map. Medical imaging venues are
+still on the list.
+
+If your lab is missing or merged with someone else's, ping me on
+[GitHub](https://github.com/BraveDistribution) with the canonical name
+and I'll add it to the anchor list and rerun.

@@ -6,8 +6,10 @@ project:
     - "CNAME"
     - ".nojekyll"
     - "papers_map.html"
+    - "lab_network.html"
 
 website:
+  draft-mode: unlinked
   title: "Matej Gazda"
   description: "AI researcher. Notes on machine learning, medical imaging, and assorted curiosities."
   site-url: https://matejgazda.com
