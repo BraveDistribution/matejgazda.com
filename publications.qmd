@@ -6,25 +6,38 @@ toc-depth: 2
 ---
 
 Full lists on
-[Google Scholar](https://scholar.google.com/) and [ORCID](https://orcid.org/).
+[Google Scholar](https://scholar.google.com/citations?user=rNzWtVgAAAAJ) and
+[ORCID](https://orcid.org/0000-0002-8405-7017).
 Co-authored works span medical imaging, ML for clinical applications, and
 discrete mathematics.
 
 ## 2026
 
+- **Large-scale modality-invariant foundation models for brain MRI analysis: Application to lesion segmentation.**
+  P. Koutsouvelis, M. Gazda, L. Volmer, S. Amirrajab, K. Barbierik, B. Setlak, et al.
+  *IEEE 23rd International Symposium on Biomedical Imaging (ISBI)*, 1–4, 2026.
+
+- **Geometry-Aware and Semi-Supervised Ensembles for Multimodal Mitral Valve Segmentation.**
+  M. Gazda, D. Paik.
+  *1st MICCAI Workshop on Medical World Models*, 2026.
+
 - **Towards Brain MRI Foundation Models for the Clinic: Findings from the FOMO25 Challenge.**
   A. Munk, S. Cerri, V. Nersesjan, C. H. Krag, J. Ambsdorf, P. R. García, et al.
   *arXiv:2604.11679*, 2026.
+
+- **A Strong Linear Baseline for Whole-Heart Cardiac Shape Completion on CT, with an Open Eleven-Structure Statistical Shape Model.**
+  M. Gazda, J. Gazda, J. Gazda, P. Drotar.
+  *arXiv:2608.19932*, 2026.
+
+- **Multitask Adversarial Network for 3D Cardiac Reconstruction and Segmentation from Biplane Echocardiography with Cross-Modality Shape Prior.**
+  M. Gazda, P. Drotar, J. Gazda, R. Kanasz, S. Kadoury.
+  *SSRN 7305295*, 2026.
 
 ## 2025
 
 - **Prospective evaluation of speech as a digital biomarker for covert hepatic encephalopathy.**
   J. Gazda, J. C. García-Pagán, S. Drazilova, P. Drotar, M. Hires, M. Gazda, et al.
-  *NPJ Digital Medicine*, 2025.
-
-- **Large-scale modality-invariant foundation models for brain MRI analysis: Application to lesion segmentation.**
-  P. Koutsouvelis, M. Gazda, L. Volmer, S. Amirrajab, K. Barbierik, B. Setlak, et al.
-  *arXiv:2511.11311*, 2025.
+  *NPJ Digital Medicine* 8 (1), 788, 2025.
 
 - **echoGAN: Extending the field of view in transthoracic echocardiography through conditional GAN-based outpainting.**
   M. Gazda, J. Gazda, S. Kadoury, R. Kanasz, P. Drotar.

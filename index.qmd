@@ -17,9 +17,9 @@ about:
     # - icon: twitter-x
     #   text: X
     #   href: https://x.com/USERNAME
-    # - icon: mortarboard-fill
-    #   text: Scholar
-    #   href: https://scholar.google.com/citations?user=ID
+    - icon: mortarboard-fill
+      text: Scholar
+      href: https://scholar.google.com/citations?user=rNzWtVgAAAAJ
     # - icon: envelope
     #   text: Email
     #   href: mailto:you@example.com
